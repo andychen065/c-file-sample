@@ -1,16 +1,62 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
+#include <map>
+#include <string>
+using namespace std;  
 
-
+static map<string, string> mGlobal;
 
 void read_properties(char *pathname, char names[100][100], char values[100][100]);
 void parseline(char *line, char *name, char *value);
 char *rtrim(char *str);
 char *trim(char *str);
 char *ltrim(char *str);
+void read_properties(char *pathname);
+void parseline(char *line);
 
-void read_properties(char *pathname, char names[100][100], char values[100][100]){
+void read_properties(char *pathname)
+{	
+    FILE *file;
+    char line[100];
+    int i = 0;
 	
+    file = fopen(pathname, "r");
+    while(fgets(line, 100, file)){
+        printf("%s\n", line);                             //just for test, delete it later.
+        parseline(line);
+        i++;
+    }
+	
+    fclose(file); 
+}
+
+void parseline(char *line)
+{
+    int length = 0, equal = 1; //equal will record the location of the '='
+    char *begin;
+	
+    length = strlen(line);
+	
+    for(begin = line; *begin != '=' && equal <= length; begin ++){
+		equal++;
+    }
+
+	char name[100];
+	char value[100];
+	
+    strncpy(name, line, equal - 1); 
+	name[equal-1] = 0;//◊÷∑˚¥ÆΩ· ¯∑˚
+
+    line+=equal;//÷∏’ÎÕ˘∫Û“∆∂Ø
+
+    strncpy(value, line, length - equal);
+	value[length - equal] = 0;//◊÷∑˚¥ÆΩ· ¯∑˚
+
+	mGlobal.insert(pair<string,string>(trim(name),trim(value)) ); 
+}
+
+void read_properties(char *pathname, char names[100][100], char values[100][100])
+{	
     FILE *file;
     char line[100];
     int i = 0;
@@ -26,8 +72,8 @@ void read_properties(char *pathname, char names[100][100], char values[100][100]
     fclose(file); 
 }
 
-void parseline(char *line, char *name, char *value){
-	
+void parseline(char *line, char *name, char *value)
+{
     int length = 0, equal = 1; //equal will record the location of the '='
     char *begin;
 	
@@ -38,10 +84,12 @@ void parseline(char *line, char *name, char *value){
     }
 	
     strncpy(name, line, equal - 1); 
-    line+=equal;
+    line+=equal;//÷∏’ÎÕ˘∫Û“∆∂Ø
     strncpy(value, line, length - equal);
+	name = trim(name);
+	value = trim(value);
 	
-    printf("name=%s, value=%s.\n", trim(name), trim(value) ); //just for test, delete it later.
+    printf("name=%s, value=%s.\n", name, value ); //just for test, delete it later.
 	
 }
 

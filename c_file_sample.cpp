@@ -43,9 +43,26 @@ int main(int argc, char* argv[])
     }
 	*/
 
-	char names[100][100], values[100][100];
-	
+	char names[100][100], values[100][100];	
 	read_properties("propertis.cfg", names, values);
+
+	read_properties("propertis.cfg");
+
+	const string key=string("url");
+	map<string,string> ::iterator it;
+	it = mGlobal.find(key);
+
+	printf("Find by key:%s...\n", key);
+	printf("key:%s\n", (it->first).c_str());
+	printf("value:%s\n", (it->second).c_str());
+
+	printf("Map scan...\n");
+	for(it=mGlobal.begin();it!=mGlobal.end();it++){
+         printf("key:%s\n", (it->first).c_str() );
+		 printf("value:%s\n", (it->second).c_str() );
+	}
+    printf("map size=%d", mGlobal.size() );
+
     return 0;
 }
 

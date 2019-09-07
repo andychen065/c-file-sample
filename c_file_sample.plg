@@ -6,23 +6,6 @@
 --------------------Configuration: c_file_sample - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPF8B.tmp" with contents
-[
-/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/c_file_sample.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"F:\c_file_sample\c_file_sample.cpp"
-]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPF8B.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPF8C.tmp" with contents
-[
-kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/c_file_sample.pdb" /machine:I386 /out:"Release/c_file_sample.exe" 
-.\Release\c_file_sample.obj
-.\Release\StdAfx.obj
-]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPF8C.tmp"
-<h3>Output Window</h3>
-Compiling...
-c_file_sample.cpp
-Linking...
 
 
 
