@@ -45,12 +45,12 @@ void parseline(char *line)
 	char value[100];
 	
     strncpy(name, line, equal - 1); 
-	name[equal-1] = 0;//×Ö·û´®½áÊø·û
+	name[equal-1] = '\0';//×Ö·û´®½áÊø·û
 
     line+=equal;//Ö¸ÕëÍùºóÒÆ¶¯
 
     strncpy(value, line, length - equal);
-	value[length - equal] = 0;//×Ö·û´®½áÊø·û
+	value[length - equal] = '\0';//×Ö·û´®½áÊø·û
 
 	mGlobal.insert(pair<string,string>(trim(name),trim(value)) ); 
 }
